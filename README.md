@@ -1,75 +1,70 @@
-# React + TypeScript + Vite
+# Maven Enforcer Helper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React SPA that analyzes maven-enforcer-plugin error messages and helps resolve dependency convergence issues.
 
-Currently, two official plugins are available:
+## What it does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Paste your Maven Enforcer plugin error output and this tool will:
+- Parse dependency convergence violations
+- Parse require upper bound dependency violations
+- Visualize conflicting dependency versions
+- Generate the `<dependencyManagement>` XML to fix your pom.xml
 
-## React Compiler
+## Usage
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Run a Maven build with the enforcer plugin to generate error output
+2. Copy the error message
+3. Paste it into the text input
+4. Click Parse to analyze
+5. Review the conflicts and copy the generated XML
 
-Note: This will impact Vite dev & build performances.
+## Development
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) (v18+)
+- [pnpm](https://pnpm.io/) package manager
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Install dependencies
+pnpm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start development server
+pnpm dev
+
+# Run tests
+pnpm test
+
+# Run tests once (CI mode)
+pnpm test:run
+
+# Build for production
+pnpm build
+
+# Run linting
+pnpm lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Technology Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Framework:** React 19 with React Compiler
+- **Build Tool:** Vite 7
+- **Language:** TypeScript 5.9 (strict mode)
+- **Testing:** Vitest with React Testing Library
+- **Linting:** ESLint 9 with typescript-eslint
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## How it works
+
+The application parses Maven enforcer output to extract:
+- `groupId:artifactId:version` patterns
+- RequireUpperBoundDeps violations
+- DependencyConvergence violations
+- Dependency tree paths
+
+It then generates valid `<dependencyManagement>` XML using the highest version for each conflict.
+
+## License
+
+MIT
