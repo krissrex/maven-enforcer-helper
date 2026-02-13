@@ -92,4 +92,42 @@ describe('mavenParser', () => {
     
     expect(result.message).toContain('No [ERROR] lines found')
   })
+
+  it('should correctly parse dependencies with classifiers like linux-x86_64', () => {
+    const input = `[ERROR] Rule 2: org.apache.maven.enforcer.rules.dependency.DependencyConvergence failed with message:[ERROR] Failed while enforcing releasability.
+[ERROR]
+[ERROR] Dependency convergence error for io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.130.Final. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-prepaid-ledger:jar:1.local-SNAPSHOT
+[ERROR]   +-com.azure:azure-storage-blob:jar:12.33.1:compile
+[ERROR]     +-com.azure:azure-core-http-netty:jar:1.16.3:compile
+[ERROR]       +-io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.130.Final:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-prepaid-ledger:jar:1.local-SNAPSHOT
+[ERROR]   +-com.azure:azure-storage-blob:jar:12.33.1:compile
+[ERROR]     +-com.azure:azure-core-http-netty:jar:1.16.3:compile
+[ERROR]       +-io.projectreactor.netty:reactor-netty-http:jar:1.2.13:compile
+[ERROR]         +-io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.128.Final:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-prepaid-ledger:jar:1.local-SNAPSHOT
+[ERROR]   +-com.azure:azure-storage-blob:jar:12.33.1:compile
+[ERROR]     +-com.azure:azure-core-http-netty:jar:1.16.3:compile
+[ERROR]       +-io.projectreactor.netty:reactor-netty-http:jar:1.2.13:compile
+[ERROR]         +-io.projectreactor.netty:reactor-netty-core:jar:1.2.13:compile
+[ERROR]           +-io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.128.Final:compile`
+
+    const result = parseMavenOutput(input)
+    
+    expect(result.type).toBe('success')
+    if (result.type === 'error') return
+    
+    const nettyConflict = result.conflicts.find(
+      c => c.target.groupId === 'io.netty' && c.target.artifactId === 'netty-transport-native-epoll'
+    )
+    
+    expect(nettyConflict).toBeDefined()
+    expect(nettyConflict!.versions).toContain('4.1.130.Final')
+    expect(nettyConflict!.versions).toContain('4.1.128.Final')
+    expect(nettyConflict!.highestVersion).toBe('4.1.130.Final')
+    expect(nettyConflict!.target.version).toBe('4.1.130.Final')
+  })
 })

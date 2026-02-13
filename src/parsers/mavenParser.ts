@@ -9,34 +9,66 @@ interface ParsedNode {
   requiredVersion?: string // For RequireUpperBoundDeps: version after <--
 }
 
+function looksLikeVersion(part: string): boolean {
+  // Version numbers typically contain digits, dots, hyphens, and alphanumeric parts
+  // Examples: 1.0, 1.2.3, 4.1.130.Final, 1.local-SNAPSHOT, 1.2.13, 1.5.29
+  return /\d/.test(part) && /^[\w.-]+$/.test(part)
+}
+
 function parseNode(line: string): ParsedNode | null {
   const trimmed = line.trim()
   // Remove tree structure prefixes (+-, |, etc.) that maven uses for dependency trees
-  const cleanLine = trimmed.replace(/^[|\s+\-\\]+/, '')
+  const cleanLine = trimmed.replace(/^[|\s+\\-]+/, '')
 
   // Check for RequireUpperBoundDeps format: groupId:artifactId:version (managed) <-- groupId:artifactId:requiredVersion
-  const upperBoundMatch = cleanLine.match(/([\w.-]+):([\w.-]+)(?::jar)?:([\w.-]+)(?::\w+)?(?:\s+\(managed\))?\s*<--\s*[\w.-]+:[\w.-]+(?::jar)?:([\w.-]+)/)
+  // Or: groupId:artifactId:jar:version <-- groupId:artifactId:jar:requiredVersion
+  // Or: groupId:artifactId:jar:classifier:version <-- groupId:artifactId:jar:classifier:requiredVersion
+  const upperBoundMatch = cleanLine.match(/([\w.-]+:[\w.-]+(?::[\w-]+)*?):([\w.-]+)(?:\s+\(managed\))?\s*<--\s*([\w.-]+:[\w.-]+(?::[\w-]+)*?):([\w.-]+)/)
   if (upperBoundMatch) {
+    const leftParts = upperBoundMatch[1].split(':')
+
     return {
       node: {
-        groupId: upperBoundMatch[1],
-        artifactId: upperBoundMatch[2],
-        version: upperBoundMatch[3],
+        groupId: leftParts[0],
+        artifactId: leftParts[1],
+        version: upperBoundMatch[2],
       },
       requiredVersion: upperBoundMatch[4],
     }
   }
 
-  // Standard format: groupId:artifactId:version or groupId:artifactId:jar:version:scope
-  const match = cleanLine.match(/([\w.-]+):([\w.-]+)(?::jar)?:([\w.-]+)(?::\w+)?(?:\s*\[(\w+)\])?/)
-  if (!match) return null
+  // Standard format: split by colon and extract components
+  // Format can be: groupId:artifactId:version
+  //                groupId:artifactId:type:version:scope
+  //                groupId:artifactId:type:classifier:version:scope
+  const parts = cleanLine.split(':')
+
+  if (parts.length < 3) return null
+
+  // Find the version by looking for the last part that looks like a version
+  // before any optional scope at the end
+  let versionIndex = -1
+  const scope = parts[parts.length - 1]
+  const hasScope = ['compile', 'test', 'runtime', 'provided', 'system'].includes(scope)
+
+  // Start from the end (or one before if there's a scope) and find the version
+  const searchStart = hasScope ? parts.length - 2 : parts.length - 1
+
+  for (let i = searchStart; i >= 2; i--) {
+    if (looksLikeVersion(parts[i])) {
+      versionIndex = i
+      break
+    }
+  }
+
+  if (versionIndex === -1) return null
 
   return {
     node: {
-      groupId: match[1],
-      artifactId: match[2],
-      version: match[3],
-      scope: match[4],
+      groupId: parts[0],
+      artifactId: parts[1],
+      version: parts[versionIndex],
+      scope: hasScope ? scope : undefined,
     },
   }
 }
