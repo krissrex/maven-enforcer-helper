@@ -116,18 +116,53 @@ describe('mavenParser', () => {
 [ERROR]           +-io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.128.Final:compile`
 
     const result = parseMavenOutput(input)
-    
+
     expect(result.type).toBe('success')
     if (result.type === 'error') return
-    
+
     const nettyConflict = result.conflicts.find(
       c => c.target.groupId === 'io.netty' && c.target.artifactId === 'netty-transport-native-epoll'
     )
-    
+
     expect(nettyConflict).toBeDefined()
     expect(nettyConflict!.versions).toContain('4.1.130.Final')
     expect(nettyConflict!.versions).toContain('4.1.128.Final')
     expect(nettyConflict!.highestVersion).toBe('4.1.130.Final')
     expect(nettyConflict!.target.version).toBe('4.1.130.Final')
+  })
+
+  it('should ignore "Failed to execute goal" lines and not parse them as dependencies', () => {
+    const input = `[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.6.2:enforce (enforce-maven) on project coop-prepaid-ledger:
+[ERROR] Rule 2: org.apache.maven.enforcer.rules.dependency.DependencyConvergence failed with message:
+[ERROR] Failed while enforcing releasability.
+[ERROR]
+[ERROR] Dependency convergence error for com.google.protobuf:protobuf-java:jar:4.33.2. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-prepaid-ledger:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-prepaid-ledger:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api.grpc:proto-google-common-protos:jar:2.65.1:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.4:compile`
+
+    const result = parseMavenOutput(input)
+
+    expect(result.type).toBe('success')
+    if (result.type === 'error') return
+
+    // Should NOT find maven-enforcer-plugin as a conflict
+    const enforcerConflict = result.conflicts.find(
+      c => c.target.groupId === 'org.apache.maven.plugins' && c.target.artifactId === 'maven-enforcer-plugin'
+    )
+    expect(enforcerConflict).toBeUndefined()
+
+    // Should still find the actual conflict
+    const protobufConflict = result.conflicts.find(
+      c => c.target.groupId === 'com.google.protobuf' && c.target.artifactId === 'protobuf-java'
+    )
+    expect(protobufConflict).toBeDefined()
+    expect(protobufConflict!.versions).toContain('4.33.2')
+    expect(protobufConflict!.versions).toContain('4.33.4')
   })
 })

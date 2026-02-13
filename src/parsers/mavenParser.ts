@@ -3,6 +3,7 @@ import type { Conflict, DependencyNode, ParseResult } from '../types/index.ts'
 const ERROR_PREFIX = '[ERROR]'
 const SEPARATOR = 'and'
 const CONFLICT_HEADER_PATTERN = /^(Dependency convergence error|Require upper bound dependencies error)/
+const FAILED_TO_EXECUTE_PATTERN = /Failed to execute goal/
 
 interface ParsedNode {
   node: DependencyNode
@@ -120,6 +121,11 @@ export function parseMavenOutput(input: string): ParseResult {
 
   for (const line of errorLines) {
     const cleanLine = line.replace(ERROR_PREFIX, '').trim()
+
+    // Skip lines that are Maven execution errors, not dependency conflicts
+    if (FAILED_TO_EXECUTE_PATTERN.test(cleanLine)) {
+      continue
+    }
 
     // Treat "and" and conflict headers as section separators
     if (cleanLine === SEPARATOR || CONFLICT_HEADER_PATTERN.test(cleanLine)) {
