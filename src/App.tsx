@@ -5,7 +5,7 @@ import { XmlOutput } from './components/XmlOutput.tsx'
 import { ErrorDisplay } from './components/ErrorDisplay.tsx'
 import { parseMavenOutput } from './parsers/mavenParser.ts'
 import { generateXml } from './utils/xmlGenerator.ts'
-import type { ParseResult } from './types/index.ts'
+import type { ParseResult, GeneratedXml } from './types/index.ts'
 import './App.css'
 
 const PLACEHOLDER = `[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
@@ -23,7 +23,9 @@ function App() {
     setResult(parseResult)
   }, [input])
 
-  const xml = result?.type === 'success' ? generateXml(result.conflicts) : ''
+  const xml: GeneratedXml = result?.type === 'success' 
+    ? generateXml(result.conflicts) 
+    : { properties: '', dependencyManagement: '' }
 
   return (
     <div className="app">
@@ -52,8 +54,8 @@ function App() {
 
         {result?.type === 'success' && (
           <>
-            <ConflictList conflicts={result.conflicts} />
             <XmlOutput xml={xml} />
+            <ConflictList conflicts={result.conflicts} />
           </>
         )}
       </main>

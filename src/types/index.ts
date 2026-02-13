@@ -15,3 +15,8 @@ export interface Conflict {
 export type ParseResult =
   | { type: 'success'; conflicts: Conflict[] }
   | { type: 'error'; message: string }
+
+export interface GeneratedXml {
+  properties: string
+  dependencyManagement: string
+}

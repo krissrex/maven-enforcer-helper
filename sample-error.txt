@@ -1,3 +1,572 @@
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.6.2:enforce (enforce-maven) on project coop-notification-service:
+[ERROR] Rule 2: org.apache.maven.enforcer.rules.dependency.DependencyConvergence failed with message:
+[ERROR] Failed while enforcing releasability.
+[ERROR]
+[ERROR] Dependency convergence error for com.google.protobuf:protobuf-java:jar:4.33.2. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.protobuf:protobuf-java-util:jar:4.33.2:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api.grpc:proto-google-common-protos:jar:2.65.1:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api.grpc:proto-google-iam-v1:jar:1.60.1:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.protobuf:protobuf-java:jar:4.33.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.protobuf:protobuf-java:jar:4.33.4:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.guava:guava:jar:33.5.0-jre. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:api-common:jar:2.57.1:compile
+[ERROR]       +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.guava:guava:jar:33.5.0-android:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-com.google.guava:guava:jar:33.4.8-android:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-io.opencensus:opencensus-contrib-http-util:jar:0.31.1:compile
+[ERROR]         +-com.google.guava:guava:jar:29.0-android:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.guava:guava:jar:33.1.0-jre:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.oauth-client:google-oauth-client:jar:1.39.0:compile
+[ERROR]         +-com.google.guava:guava:jar:31.1-android:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.api:api-common:jar:2.57.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-com.google.api:api-common:jar:2.57.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:api-common:jar:2.57.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.api:api-common:jar:2.53.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.api-client:google-api-client:jar:2.8.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.apis:google-api-services-sqladmin:jar:v1beta4-rev20251201-2.0.0:compile
+[ERROR]         +-com.google.api-client:google-api-client:jar:2.7.2:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.auth:google-auth-library-oauth2-http:jar:1.42.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.auth:google-auth-library-oauth2-http:jar:1.30.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.0-rc1:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for org.apache.httpcomponents:httpclient:jar:4.5.14. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.http-client:google-http-client-apache-v2:jar:2.0.0:compile
+[ERROR]           +-org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:apache-client:jar:2.41.28:runtime
+[ERROR]       +-org.apache.httpcomponents:httpclient:jar:4.5.13:runtime
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.j2objc:j2objc-annotations:jar:3.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR]       +-com.google.j2objc:j2objc-annotations:jar:3.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:api-common:jar:2.57.1:compile
+[ERROR]       +-com.google.j2objc:j2objc-annotations:jar:3.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-com.google.j2objc:j2objc-annotations:jar:3.0.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for org.jetbrains.kotlinx:kotlinx-serialization-json:jar:1.10.0. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-logging:jar:3.20260204.135728:compile
+[ERROR]     +-org.jetbrains.kotlinx:kotlinx-serialization-json:jar:1.10.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-http4k-setup:jar:5.20260101.074054:compile
+[ERROR]     +-org.jetbrains.kotlinx:kotlinx-serialization-json:jar:1.9.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:properties:jar:3.20260129.164010:compile
+[ERROR]     +-org.jetbrains.kotlinx:kotlinx-serialization-json:jar:1.9.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.jetbrains.kotlinx:kotlinx-serialization-json:jar:1.10.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.code.gson:gson:jar:2.8.9. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.protobuf:protobuf-java-util:jar:4.33.2:compile
+[ERROR]       +-com.google.code.gson:gson:jar:2.8.9:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.code.gson:gson:jar:2.12.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client-gson:jar:2.1.0:compile
+[ERROR]       +-com.google.code.gson:gson:jar:2.11.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for no.liflig:liflig-logging:jar:3.20260204.135728. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-logging:jar:3.20260204.135728:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-http4k-setup:jar:5.20260101.074054:compile
+[ERROR]     +-no.liflig:liflig-logging:jar:3.20251201.114154:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-http4k-setup:jar:5.20260101.074054:compile
+[ERROR]     +-no.liflig:liflig-public-exception:jar:2.20251121.121333:compile
+[ERROR]       +-no.liflig:liflig-logging:jar:3.20251121.115719:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:properties:jar:3.20260129.164010:compile
+[ERROR]     +-no.liflig:liflig-logging:jar:3.20251201.114154:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-messaging-awssdk:jar:3.20260209.104415:compile
+[ERROR]     +-no.liflig:liflig-messaging-core:jar:3.20260209.104415:compile
+[ERROR]       +-no.liflig:liflig-logging:jar:3.20251201.114154:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-messaging-awssdk:jar:3.20260209.104415:compile
+[ERROR]     +-no.liflig:liflig-logging:jar:3.20251201.114154:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for io.grpc:grpc-context:jar:1.27.2. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-io.opencensus:opencensus-api:jar:0.31.1:compile
+[ERROR]         +-io.grpc:grpc-context:jar:1.27.2:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-io.grpc:grpc-context:jar:1.70.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for org.slf4j:slf4j-api:jar:2.0.17. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-logging:jar:3.20260204.135728:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-ch.qos.logback:logback-classic:jar:1.5.29:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.slf4j:jul-to-slf4j:jar:2.0.17:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.slf4j:jcl-over-slf4j:jar:2.0.17:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-no.liflig:liflig-http4k-setup:jar:5.20260101.074054:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.http4k:http4k-server-jetty:jar:6.28.1.0:compile
+[ERROR]     +-org.eclipse.jetty:jetty-server:jar:12.1.6:compile
+[ERROR]       +-org.eclipse.jetty:jetty-http:jar:12.1.6:compile
+[ERROR]         +-org.eclipse.jetty:jetty-util:jar:12.1.6:compile
+[ERROR]           +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.http4k:http4k-server-jetty:jar:6.28.1.0:compile
+[ERROR]     +-org.eclipse.jetty:jetty-server:jar:12.1.6:compile
+[ERROR]       +-org.eclipse.jetty:jetty-http:jar:12.1.6:compile
+[ERROR]         +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.http4k:http4k-server-jetty:jar:6.28.1.0:compile
+[ERROR]     +-org.eclipse.jetty:jetty-server:jar:12.1.6:compile
+[ERROR]       +-org.eclipse.jetty:jetty-io:jar:12.1.6:compile
+[ERROR]         +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.http4k:http4k-server-jetty:jar:6.28.1.0:compile
+[ERROR]     +-org.eclipse.jetty:jetty-server:jar:12.1.6:compile
+[ERROR]       +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.http4k:http4k-server-jetty:jar:6.28.1.0:compile
+[ERROR]     +-org.eclipse.jetty.websocket:jetty-websocket-jetty-server:jar:12.1.6:compile
+[ERROR]       +-org.eclipse.jetty.websocket:jetty-websocket-core-server:jar:12.1.6:compile
+[ERROR]         +-org.eclipse.jetty.websocket:jetty-websocket-core-common:jar:12.1.6:compile
+[ERROR]           +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-dnsjava:dnsjava:jar:3.6.3:compile
+[ERROR]         +-org.slf4j:slf4j-api:jar:1.7.36:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.zaxxer:HikariCP:jar:7.0.2:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-org.jdbi:jdbi3-core:jar:3.51.0:compile
+[ERROR]     +-org.slf4j:slf4j-api:jar:2.0.17:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:sdk-core:jar:2.41.28:compile
+[ERROR]       +-org.slf4j:slf4j-api:jar:1.7.36:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:regions:jar:2.41.28:compile
+[ERROR]       +-org.slf4j:slf4j-api:jar:1.7.36:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:utils:jar:2.41.28:compile
+[ERROR]       +-org.slf4j:slf4j-api:jar:1.7.36:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:netty-nio-client:jar:2.41.28:runtime
+[ERROR]       +-org.slf4j:slf4j-api:jar:1.7.36:runtime
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for commons-codec:commons-codec:jar:1.11. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-org.apache.httpcomponents:httpclient:jar:4.5.14:compile
+[ERROR]         +-commons-codec:commons-codec:jar:1.11:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-commons-codec:commons-codec:jar:1.17.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-software.amazon.awssdk:ses:jar:2.41.28:compile
+[ERROR]     +-software.amazon.awssdk:apache-client:jar:2.41.28:runtime
+[ERROR]       +-commons-codec:commons-codec:jar:1.17.1:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.errorprone:error_prone_annotations:jar:2.41.0. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.guava:guava:jar:33.5.0-jre:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.41.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.protobuf:protobuf-java-util:jar:4.33.2:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.18.0:runtime
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:api-common:jar:2.57.1:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.42.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.38.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.36.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.errorprone:error_prone_annotations:jar:2.42.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.errorprone:error_prone_annotations:jar:2.46.0:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.api:gax:jar:2.74.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api:gax:jar:2.73.0-rc1:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.http-client:google-http-client-gson:jar:2.1.0. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.http-client:google-http-client-gson:jar:2.1.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client-gson:jar:2.1.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.http-client:google-http-client-gson:jar:2.1.0-rc1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.http-client:google-http-client-gson:jar:2.0.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.oauth-client:google-oauth-client:jar:1.39.0:compile
+[ERROR]         +-com.google.http-client:google-http-client-gson:jar:1.43.3:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.auth:google-auth-library-credentials:jar:1.42.1. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.api:gax:jar:2.74.1:compile
+[ERROR]       +-com.google.auth:google-auth-library-credentials:jar:1.42.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-credentials:jar:1.42.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.auth:google-auth-library-credentials:jar:1.42.1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.auth:google-auth-library-credentials:jar:1.30.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.auth:google-auth-library-credentials:jar:1.42.0-rc1:compile
+[ERROR]
+[ERROR]
+[ERROR] Dependency convergence error for com.google.http-client:google-http-client:jar:2.1.0. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:jar:1.42.1:compile
+[ERROR]       +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:jar:2.64.1:compile
+[ERROR]     +-com.google.http-client:google-http-client-gson:jar:2.1.0:compile
+[ERROR]       +-com.google.http-client:google-http-client:jar:2.1.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.http-client:google-http-client:jar:2.1.0-rc1:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.http-client:google-http-client-apache-v2:jar:2.0.0:compile
+[ERROR]           +-com.google.http-client:google-http-client:jar:2.0.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.api-client:google-api-client:jar:2.8.1:compile
+[ERROR]         +-com.google.http-client:google-http-client:jar:2.0.0:compile
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:jar:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:jar:1.28.0:compile
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:jar:1.28.0:compile
+[ERROR]       +-com.google.oauth-client:google-oauth-client:jar:1.39.0:compile
+[ERROR]         +-com.google.http-client:google-http-client:jar:1.43.3:compile
+[ERROR]
+[ERROR] Rule 3: org.apache.maven.enforcer.rules.dependency.RequireUpperBoundDeps failed with message:
+[ERROR] Failed while enforcing RequireUpperBoundDeps. The error(s) are [
+[ERROR] Require upper bound dependencies error for com.google.protobuf:protobuf-java:4.33.2. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.protobuf:protobuf-java:4.33.2
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.api:gax:2.74.1
+[ERROR]       +-com.google.protobuf:protobuf-java:4.33.2
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.protobuf:protobuf-java-util:4.33.2
+[ERROR]       +-com.google.protobuf:protobuf-java:4.33.2
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.api.grpc:proto-google-common-protos:2.65.1
+[ERROR]       +-com.google.protobuf:protobuf-java:4.33.2
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.api.grpc:proto-google-iam-v1:1.60.1
+[ERROR]       +-com.google.protobuf:protobuf-java:4.33.2
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:1.28.0
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:1.28.0
+[ERROR]       +-com.google.protobuf:protobuf-java:4.33.4
+[ERROR] ,
+[ERROR] Require upper bound dependencies error for com.google.code.gson:gson:2.8.9. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.protobuf:protobuf-java-util:4.33.2
+[ERROR]       +-com.google.code.gson:gson:2.8.9
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:1.42.1
+[ERROR]       +-com.google.code.gson:gson:2.12.1
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.http-client:google-http-client-gson:2.1.0
+[ERROR]       +-com.google.code.gson:gson:2.11.0
+[ERROR] ,
+[ERROR] Require upper bound dependencies error for com.google.errorprone:error_prone_annotations:2.42.0. Paths to dependency are:
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.errorprone:error_prone_annotations:2.42.0
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.guava:guava:33.5.0-jre
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.41.0
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
 [ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
 [ERROR]     +-com.google.protobuf:protobuf-java-util:4.33.2
 [ERROR]       +-com.google.errorprone:error_prone_annotations:2.18.0 [runtime]

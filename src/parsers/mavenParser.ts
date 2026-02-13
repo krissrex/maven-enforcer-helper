@@ -5,7 +5,10 @@ const SEPARATOR = 'and'
 
 function parseNode(line: string): DependencyNode | null {
   const trimmed = line.trim()
-  const match = trimmed.match(/([\w.-]+):([\w.-]+):([\w.-]+)(?:\s*\[(\w+)\])?/)
+  // Remove tree structure prefixes (+-, |, etc.) that maven uses for dependency trees
+  const cleanLine = trimmed.replace(/^[|\s+\-\\]+/, '')
+  // Match format: groupId:artifactId:version or groupId:artifactId:jar:version:scope
+  const match = cleanLine.match(/([\w.-]+):([\w.-]+)(?::jar)?:([\w.-]+)(?::\w+)?(?:\s*\[(\w+)\])?/)
   if (!match) return null
 
   return {
