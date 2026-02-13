@@ -1,0 +1,24 @@
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.protobuf:protobuf-java-util:4.33.2
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.18.0 [runtime]
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.api:api-common:2.57.1
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.42.0
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.auth:google-auth-library-oauth2-http:1.42.1
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.38.0
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud:google-cloud-core:2.64.1
+[ERROR]     +-com.google.http-client:google-http-client:2.1.0
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.36.0
+[ERROR] and
+[ERROR] +-no.coop.giftcard:coop-notification-service:1.local-SNAPSHOT
+[ERROR]   +-com.google.cloud.sql:postgres-socket-factory:1.28.0
+[ERROR]     +-com.google.cloud.sql:jdbc-socket-factory-core:1.28.0
+[ERROR]       +-com.google.errorprone:error_prone_annotations:2.46.0
+[ERROR] ]

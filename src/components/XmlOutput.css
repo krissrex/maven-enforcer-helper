@@ -1,0 +1,49 @@
+.xml-output {
+  margin: 1rem 0;
+}
+
+.xml-output h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.xml-container {
+  position: relative;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 4px;
+  background-color: var(--code-bg, #1e1e1e);
+  overflow: hidden;
+}
+
+.xml-output pre {
+  margin: 0;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  color: var(--code-color, #d4d4d4);
+  white-space: pre;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: var(--button-bg, #646cff);
+  color: var(--button-color, #fff);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+  background-color: var(--button-hover-bg, #535bf2);
+}
+
+.copy-button.copied {
+  background-color: var(--success-color, #4caf50);
+}
