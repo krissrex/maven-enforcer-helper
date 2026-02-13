@@ -2,29 +2,51 @@ import type { Conflict, DependencyNode, ParseResult } from '../types/index.ts'
 
 const ERROR_PREFIX = '[ERROR]'
 const SEPARATOR = 'and'
+const CONFLICT_HEADER_PATTERN = /^(Dependency convergence error|Require upper bound dependencies error)/
 
-function parseNode(line: string): DependencyNode | null {
+interface ParsedNode {
+  node: DependencyNode
+  requiredVersion?: string // For RequireUpperBoundDeps: version after <--
+}
+
+function parseNode(line: string): ParsedNode | null {
   const trimmed = line.trim()
   // Remove tree structure prefixes (+-, |, etc.) that maven uses for dependency trees
   const cleanLine = trimmed.replace(/^[|\s+\-\\]+/, '')
-  // Match format: groupId:artifactId:version or groupId:artifactId:jar:version:scope
+
+  // Check for RequireUpperBoundDeps format: groupId:artifactId:version (managed) <-- groupId:artifactId:requiredVersion
+  const upperBoundMatch = cleanLine.match(/([\w.-]+):([\w.-]+)(?::jar)?:([\w.-]+)(?::\w+)?(?:\s+\(managed\))?\s*<--\s*[\w.-]+:[\w.-]+(?::jar)?:([\w.-]+)/)
+  if (upperBoundMatch) {
+    return {
+      node: {
+        groupId: upperBoundMatch[1],
+        artifactId: upperBoundMatch[2],
+        version: upperBoundMatch[3],
+      },
+      requiredVersion: upperBoundMatch[4],
+    }
+  }
+
+  // Standard format: groupId:artifactId:version or groupId:artifactId:jar:version:scope
   const match = cleanLine.match(/([\w.-]+):([\w.-]+)(?::jar)?:([\w.-]+)(?::\w+)?(?:\s*\[(\w+)\])?/)
   if (!match) return null
 
   return {
-    groupId: match[1],
-    artifactId: match[2],
-    version: match[3],
-    scope: match[4],
+    node: {
+      groupId: match[1],
+      artifactId: match[2],
+      version: match[3],
+      scope: match[4],
+    },
   }
 }
 
-function extractPath(lines: string[]): DependencyNode[] {
-  const path: DependencyNode[] = []
+function extractPath(lines: string[]): Array<{ node: DependencyNode; requiredVersion?: string }> {
+  const path: Array<{ node: DependencyNode; requiredVersion?: string }> = []
   for (const line of lines) {
-    const node = parseNode(line)
-    if (node) {
-      path.push(node)
+    const parsed = parseNode(line)
+    if (parsed) {
+      path.push(parsed)
     }
   }
   return path
@@ -67,7 +89,8 @@ export function parseMavenOutput(input: string): ParseResult {
   for (const line of errorLines) {
     const cleanLine = line.replace(ERROR_PREFIX, '').trim()
 
-    if (cleanLine === SEPARATOR) {
+    // Treat "and" and conflict headers as section separators
+    if (cleanLine === SEPARATOR || CONFLICT_HEADER_PATTERN.test(cleanLine)) {
       if (currentSection.length > 0) {
         sections.push(currentSection)
         currentSection = []
@@ -91,25 +114,37 @@ export function parseMavenOutput(input: string): ParseResult {
     const path = extractPath(section)
     if (path.length === 0) continue
 
-    const target = path[path.length - 1]
+    const targetEntry = path[path.length - 1]
+    const target = targetEntry.node
     const key = `${target.groupId}:${target.artifactId}`
+
+    // For RequireUpperBoundDeps, use the requiredVersion as the target version
+    // This is the version we need to set in dependencyManagement
+    const effectiveVersion = targetEntry.requiredVersion || target.version
 
     if (!conflicts.has(key)) {
       conflicts.set(key, {
-        target,
+        target: {
+          ...target,
+          version: effectiveVersion,
+        },
         paths: [],
         versions: [],
-        highestVersion: target.version,
+        highestVersion: effectiveVersion,
       })
     }
 
     const conflict = conflicts.get(key)!
-    conflict.paths.push(path)
+    conflict.paths.push(path.map((p) => p.node))
 
+    // Track both the current version and required version
     if (!conflict.versions.includes(target.version)) {
       conflict.versions.push(target.version)
-      conflict.highestVersion = findHighestVersion(conflict.versions)
     }
+    if (targetEntry.requiredVersion && !conflict.versions.includes(targetEntry.requiredVersion)) {
+      conflict.versions.push(targetEntry.requiredVersion)
+    }
+    conflict.highestVersion = findHighestVersion(conflict.versions)
   }
 
   const conflictList = Array.from(conflicts.values())

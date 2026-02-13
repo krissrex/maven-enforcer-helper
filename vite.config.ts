@@ -10,4 +10,10 @@ export default defineConfig({
       },
     }),
   ],
+  // @ts-expect-error - Vitest config is not in Vite types
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.ts',
+  },
 })

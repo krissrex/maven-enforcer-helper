@@ -21,11 +21,17 @@ pnpm build
 # Run ESLint
 pnpm lint
 
+# Run tests
+pnpm test
+
+# Run tests once (CI mode)
+pnpm test:run
+
 # Preview production build
 pnpm preview
 ```
 
-**Note:** No test runner is currently configured. If adding tests, use Vitest with React Testing Library.
+**Testing:** Vitest is configured with jsdom environment and React Testing Library.
 
 ## Technology Stack
 
